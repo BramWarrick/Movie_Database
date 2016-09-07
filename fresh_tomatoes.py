@@ -127,29 +127,50 @@ movie_tile_content = '''
 '''
 
 def create_movie_tiles_content(movies):
-    # The HTML content for this section of the page
-    content = ''
-    for movie in movies:
-        # Extract the youtube ID from the url
-        youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
-        youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
-        trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
+  """Accepts a list of movie instances and creates a tile on the HTML page for each.
 
-        # Append the tile for the movie with its content filled in
-        content += movie_tile_content.format(
-            movie_title=movie.title,
-            storyline=movie.storyline,
-            poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id,
-            release_year = movie.release_year
-        )
-    return content
+  Args:
+    movies: list of movies instances, referred to by name
+  """
+  content = ''
+  for movie in movies:
+      trailer_youtube_id = youtubeTrailerId(movie.trailer_youtube_url)
+
+      content += movie_tile_content.format(
+          movie_title=movie.title,
+          storyline=movie.storyline,
+          poster_image_url=movie.poster_image_url,
+          trailer_youtube_id=trailer_youtube_id,
+          release_year = movie.release_year
+      )
+  return content
+
+def youtubeTrailerId(url):
+  """Receives a traditional youtube url and returns a link for use in the pop up window.
+
+  Args:
+    url: traditional youtube url
+  Returns:
+    youtube_trailer_id: corrected link for youtube video, for use in the modal window
+  """
+
+  youtube_id_match = re.search(r'(?<=v=)[^&#]+', url)
+  youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', url)
+  trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
+
+  return trailer_youtube_id
 
 def open_movies_page(movies):
+  """Creates then opens a fresh HTML page with the movies listed.
+
+  Args:
+    movies: a list of class instances, each with all their details to create a tile within the webpage
+  """
+
   # Create or overwrite the output file
   output_file = open('fresh_tomatoes.html', 'w')
 
-  # Replace the placeholder for the movie tiles with the actual dynamically generated content
+  # Replace the placeholder for the movie tiles with the dynamically generated content
   rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
 
   # Output the file
