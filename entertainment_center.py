@@ -11,7 +11,7 @@
 import media
 import fresh_tomatoes
 
-poster_folder = "C:\Users\\bramw\Programming\Intro to Programming\Stage 1\ipnd-starter-code-master\stage_3\lesson_3.4_make_classes\\a_movies\poster_images\\"
+poster_folder = "poster_images\\"
 
 brick = media.Movie("Brick",
 											"Film noir/gumshoe. A high school student works to find and rescue a friend.\nUnder-rated; art-house.",
