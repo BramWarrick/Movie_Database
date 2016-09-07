@@ -12,7 +12,15 @@ class Movie():
     """ This class provides a way to store movie related information"""
 
     def __init__(self, movie_title, movie_storyline, poster_image_url, trailer_youtube_url, release_year):
-        # initialize instance of class Movie
+        """Initialize instance of class Movie
+
+        Args:
+            movie_title: Title of movie for instance of class
+            movie_storyline: Brief summary of plot
+            poster_image_url: location for image, refcatored to be local
+            trailer_youtube_url: url for the movie's official trailer
+            release_year: year of the movie's release in the United States
+        """
         self.title = movie_title
         self.storyline = movie_storyline
         self.poster_image_url = poster_image_url
@@ -20,4 +28,5 @@ class Movie():
         self.release_year = release_year
 
     def show_trailer(self):
-     webbrowser.open(self.trailer_youtube_url)
+        """Opens movie's youtube trailer in web browser"""
+        webbrowser.open(self.trailer_youtube_url)
