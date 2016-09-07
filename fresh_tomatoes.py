@@ -22,7 +22,7 @@ main_page_head = '''
             width: 640px;
             height: 480px;
         }
-        .hanging-close {
+        .hanging-close {s
             position: absolute;
             top: -12px;
             right: -12px;
@@ -134,7 +134,7 @@ def create_movie_tiles_content(movies):
   """
   content = ''
   for movie in movies:
-      trailer_youtube_id = youtubeTrailerId(movie.trailer_youtube_url)
+      trailer_youtube_id = youtube_trailer_id(movie.trailer_youtube_url)
 
       content += movie_tile_content.format(
           movie_title=movie.title,
@@ -145,7 +145,7 @@ def create_movie_tiles_content(movies):
       )
   return content
 
-def youtubeTrailerId(url):
+def youtube_trailer_id(url):
   """Receives a traditional youtube url and returns a link for use in the pop up window.
 
   Args:
@@ -161,7 +161,7 @@ def youtubeTrailerId(url):
   return trailer_youtube_id
 
 def open_movies_page(movies):
-  """Creates then opens a fresh HTML page with the movies listed.
+  """Creates/opens a fresh HTML page and writes all movies into the template, creating a tile per movie. Then opens file.
 
   Args:
     movies: a list of class instances, each with all their details to create a tile within the webpage
