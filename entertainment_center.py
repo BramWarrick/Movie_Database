@@ -60,7 +60,5 @@ a_fistful_of_dollars = media.Movie("A Fistful of Dollars",
 
 movies = [brick, the_shawshank_redemption, interstellar,
 				 kill_bill, kill_bill_volume_2, a_fistful_of_dollars]
-				 
-fresh_tomatoes.open_movies_page(movies)
 
-# print media.Movie.__module__
+fresh_tomatoes.open_movies_page(movies)
