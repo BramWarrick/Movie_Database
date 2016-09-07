@@ -127,7 +127,7 @@ movie_tile_content = '''
 '''
 
 def create_movie_tiles_content(movies):
-  """Accepts a list of movie instances and creates a tile on the HTML page for each.
+  """Accepts a list of movie instances, creates a tile on HTML page for each.
 
   Args:
     movies: list of movies instances, referred to by name
@@ -146,12 +146,12 @@ def create_movie_tiles_content(movies):
   return content
 
 def youtube_trailer_id(url):
-  """Receives a traditional youtube url and returns a link for use in the pop up window.
+  """Receives a youtube url and returns a link for use in the pop up window.
 
   Args:
     url: traditional youtube url
   Returns:
-    youtube_trailer_id: corrected link for youtube video, for use in the modal window
+    youtube_trailer_id: corrected link for youtube, for use in the modal window
   """
 
   youtube_id_match = re.search(r'(?<=v=)[^&#]+', url)
@@ -161,10 +161,12 @@ def youtube_trailer_id(url):
   return trailer_youtube_id
 
 def open_movies_page(movies):
-  """Creates/opens a fresh HTML page and writes all movies into the template, creating a tile per movie. Then opens file.
+  """Creates an HTML page, writes all movies into the template, 
+      creating a tile per movie. Then opens file.
 
   Args:
-    movies: a list of class instances, each with all their details to create a tile within the webpage
+    movies: a list of class instances, 
+      each with all their details to create a tile within the webpage
   """
 
   # Create or overwrite the output file
